@@ -1,0 +1,41 @@
+# devkitPro / 3DS build output
+/build/
+*.elf
+*.3dsx
+*.smdh
+*.map
+*.lst
+*.cia
+*.cci
+*.cxi
+*.3ds
+
+# Object and dependency files
+*.o
+*.d
+*.a
+
+# Generated archives / release packages
+*.zip
+*.tar
+*.tar.gz
+*.7z
+
+# Runtime output / sensitive files
+token.json
+/config/
+*.log
+
+# Spotify credentials / local secrets
+client_secret*
+*.secret
+*.env
+.env
+
+# Editor / OS files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
