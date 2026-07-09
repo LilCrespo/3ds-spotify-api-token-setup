@@ -46,6 +46,10 @@ APP_DESCRIPTION := Generate a Spotify API token.json file
 APP_AUTHOR      := LilCrespo
 ICON            := icon.png
 
+CIA_RSF         :=  cia.rsf
+CIA_ICON        :=  $(BUILD)/icon.icn
+CIA_BANNER      :=  $(BUILD)/banner.bnr
+CIA_OUTPUT      :=  $(TARGET).cia
 #---------------------------------------------------------------------------------
 # options for code generation
 #---------------------------------------------------------------------------------
@@ -163,7 +167,7 @@ ifneq ($(ROMFS),)
 	export _3DSXFLAGS += --romfs=$(CURDIR)/$(ROMFS)
 endif
 
-.PHONY: all clean
+.PHONY: all clean cia
 
 #---------------------------------------------------------------------------------
 all: $(BUILD) $(GFXBUILD) $(DEPSDIR) $(ROMFS_T3XFILES) $(T3XHFILES)
@@ -186,7 +190,28 @@ endif
 clean:
 	@echo clean ...
 	@rm -fr $(BUILD) $(TARGET).3dsx $(OUTPUT).smdh $(TARGET).elf $(GFXBUILD)
+	@rm -fr $(BUILD) $(TARGET).3dsx $(OUTPUT).smdh $(TARGET).elf $(CIA_OUTPUT) $(GFXBUILD)
 
+#---------------------------------------------------------------------------------
+$(CIA_ICON): icon.png | $(BUILD)
+	@echo creating CIA icon...
+	bannertool makesmdh -s "$(APP_TITLE)" -l "$(APP_DESCRIPTION)" -p "$(APP_AUTHOR)" -i $< -o $@ -f visible
+
+#---------------------------------------------------------------------------------
+$(CIA_BANNER): banner.png banner.wav | $(BUILD)
+	@echo creating CIA banner...
+	bannertool makebanner -i banner.png -a banner.wav -o $@
+
+#---------------------------------------------------------------------------------
+cia: all $(CIA_ICON) $(CIA_BANNER)
+	@echo creating CIA...
+	makerom -f cia -o $(CIA_OUTPUT) -target t -exefslogo \
+		-elf $(OUTPUT).elf \
+		-rsf $(CIA_RSF) \
+		-icon $(CIA_ICON) \
+		-banner $(CIA_BANNER) \
+		-major 1 -minor 0 -micro 0
+		
 #---------------------------------------------------------------------------------
 $(GFXBUILD)/%.t3x	$(BUILD)/%.h	:	%.t3s
 #---------------------------------------------------------------------------------

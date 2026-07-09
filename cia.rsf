@@ -1,0 +1,127 @@
+BasicInfo:
+  Title                   : "Spotify API Token Setup"
+  CompanyCode             : "00"
+  ProductCode             : "CTR-H-STKN"
+  ContentType             : Application
+  Logo                    : Homebrew
+
+TitleInfo:
+  UniqueId                : 0x53554
+  Category                : Application
+
+Option:
+  UseOnSD                 : true
+  FreeProductCode         : true
+  EnableCrypt             : false
+  EnableCompress          : true
+
+SystemControlInfo:
+  SaveDataSize            : 0KB
+  RemasterVersion         : 0
+  StackSize               : 0x40000
+
+AccessControlInfo:
+  FileSystemAccess:
+   - DirectSdmc
+   - DirectSdmcWrite
+
+  IdealProcessor          : 0
+  AffinityMask            : 1
+  Priority                : 16
+  MaxCpu                  : 0x9E
+  DisableDebug            : false
+  EnableForceDebug        : false
+  CanWriteSharedPage      : false
+  CanUsePrivilegedPriority: false
+  CanUseNonAlphabetAndNumber: false
+  PermitMainFunctionArgument: false
+  CanShareDeviceMemory    : false
+  RunnableOnSleep         : false
+  SpecialMemoryArrange    : false
+  CoreVersion             : 2
+  DescVersion             : 2
+  ReleaseKernelMajor      : "02"
+  ReleaseKernelMinor      : "33"
+  MemoryType              : Application
+  HandleTableSize         : 512
+  SystemModeExt           : Legacy
+  SystemMode              : 64MB
+
+  SystemCallAccess:
+    ArbitrateAddress      : 34
+    Break                 : 60
+    CancelTimer           : 28
+    ClearEvent            : 25
+    ClearTimer            : 29
+    CloseHandle           : 35
+    ConnectToPort         : 45
+    ControlMemory         : 1
+    CreateAddressArbiter  : 33
+    CreateEvent           : 23
+    CreateMemoryBlock     : 30
+    CreateMutex           : 19
+    CreateSemaphore       : 21
+    CreateThread          : 8
+    CreateTimer           : 26
+    DuplicateHandle       : 39
+    ExitProcess           : 3
+    ExitThread            : 9
+    GetCurrentProcessorNumber: 17
+    GetHandleInfo         : 41
+    GetProcessId          : 53
+    GetProcessIdOfThread  : 54
+    GetProcessIdealProcessor: 6
+    GetProcessInfo        : 43
+    GetResourceLimit      : 56
+    GetResourceLimitCurrentValues: 58
+    GetResourceLimitLimitValues: 57
+    GetSystemInfo         : 42
+    GetSystemTick         : 40
+    GetThreadContext      : 59
+    GetThreadId           : 55
+    GetThreadIdealProcessor: 15
+    GetThreadInfo         : 44
+    GetThreadPriority     : 11
+    MapMemoryBlock        : 31
+    OutputDebugString     : 61
+    QueryMemory           : 2
+    ReleaseMutex          : 20
+    ReleaseSemaphore      : 22
+    SendSyncRequest       : 50
+    SendSyncRequest1      : 46
+    SendSyncRequest2      : 47
+    SendSyncRequest3      : 48
+    SendSyncRequest4      : 49
+    SetThreadPriority     : 12
+    SetTimer              : 27
+    SignalEvent           : 24
+    SleepThread           : 10
+    UnmapMemoryBlock      : 32
+    WaitSynchronization1  : 36
+    WaitSynchronizationN  : 37
+
+  ServiceAccessControl:
+   - APT:U
+   - ac:u
+   - cam:u
+   - cfg:u
+   - fs:USER
+   - gsp::Gpu
+   - hid:USER
+   - http:C
+   - ndm:u
+   - soc:U
+   - ssl:C
+   - y2r:u
+
+SystemControlInfo:
+  Dependency:
+    ac                  : 0x0004013000002402L
+    camera              : 0x0004013000001602L
+    cfg                 : 0x0004013000001702L
+    gsp                 : 0x0004013000001c02L
+    hid                 : 0x0004013000001d02L
+    http                : 0x0004013000002902L
+    ndm                 : 0x0004013000002b02L
+    socket              : 0x0004013000002e02L
+    ssl                 : 0x0004013000002f02L

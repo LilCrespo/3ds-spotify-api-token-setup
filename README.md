@@ -48,7 +48,7 @@ This app uses PKCE, so no client secret is needed on the 3DS.
 
 You need a working devkitPro Nintendo 3DS development environment.
 
-Required tools and libraries:
+Required tools and libraries for building the `.3dsx`:
 
 - devkitARM
 - libctru
@@ -56,7 +56,14 @@ Required tools and libraries:
 - 3ds-mbedtls
 - make
 
+To build the `.cia`, you also need
+
+- makerom
+- bannertool
+
 ### Build
+
+#### Build `.3dsx`
 
 From the project root:
 
@@ -65,15 +72,30 @@ make clean
 make
 ```
 
+#### Build `.cia`
+
+From the project root:
+
+```bash
+make clean
+make cia
+```
+
 ## Installing
+
+### Install `.3dsx`
 
 Copy the generated files to the SD card, for example:
 
 ```text
-sdmc:/3ds/3ds-spotify-token-setup.3dsx
+sdmc:/3ds/3ds-spotify-api-token-setup.3dsx
 ```
 
 Then launch the app from the Homebrew Launcher.
+
+### Install `.cia`
+
+Install the `.cia` with `FBI`. Then launch the app from the home menu.
 
 ## Usage
 
